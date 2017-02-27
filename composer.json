@@ -3,17 +3,15 @@
     "type": "library",
     "homepage": "https://affenrakete.de",
     "require": {
-        "inwx/domrobot": "dev-master"
+        "inwx/domrobot": "dev-master",
+        "katzgrau/klogger": "dev-master"
     },
 
     "scripts":
             {
                 "post-install-cmd":
                         [
-                            "echo Please install CYGWIN on Windows to perform the install commands:",
-                            "mkdir -p logs",
-                            "mkdir -p libraries",
-                            "cp -r vendor/inwx/domrobot/INWX/Domrobot.php libraries/domrobot.php"
+                            "mkdir -p logs"
                         ],
                 "post-update-cmd":
                         [
