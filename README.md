@@ -1,8 +1,5 @@
 # ddns
-
-DDNS inwx Updater
-=================
-A dynamic update for inwx subdomain.
+A dynamic ddns updater for inwx subdomain.
 
 About
 -----
@@ -21,17 +18,17 @@ Quick setup
 Example
 -----
 "/conf/inwx.ini"
-<pre>
+```INI
 ; API URL
 apiurl = https://api.domrobot.com/xmlrpc/
 ; inwx username
 username = affenrakete_inwx_login
 ; inwx password
 password = inwx_login_pwd_1!!
-</pre>
+```
 
 "/conf/test-affenrakete-de.ini"
-<pre>
+```INI
  ; subdomain login data
 [ddns]
 ; API Key
@@ -47,6 +44,6 @@ subdomain = test
 ; log data
 [log]
 filepath = "./log/test-affenrakete-de.log"
-</pre>
+```
 
-./update.php?domain=test.affenrakete.de&password=YOURSECRETPWD!11&ipv4=127.0.0.1&ipv6=::1
+`./update.php?domain=test.affenrakete.de&password=YOURSECRETPWD!11&ipv4=127.0.0.1&ipv6=::1`
