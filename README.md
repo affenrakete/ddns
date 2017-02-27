@@ -1,6 +1,8 @@
 # ddns
 A dynamic ddns updater for inwx subdomain.
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/affenrakete/ddns/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/affenrakete/ddns/?branch=master)
+
 About
 -----
 Create your own DDNS Server that supports IPv4 and IPv6.
