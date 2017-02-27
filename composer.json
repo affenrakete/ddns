@@ -1,10 +1,13 @@
 {
     "name": "affenrakete/ddns",
-    "type": "library",
+    "description": "ddns manager for inwx",
+    "version": "1.0-beta.2",
     "homepage": "https://affenrakete.de",
+    "license": "GPL-3.0",
     "require": {
         "inwx/domrobot": "dev-master",
-        "katzgrau/klogger": "dev-master"
+        "katzgrau/klogger": "dev-master",
+        "php": ">5.4"
     },
 
     "scripts":
