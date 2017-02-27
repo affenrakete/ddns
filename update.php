@@ -9,14 +9,13 @@
  */
 header('Content-type: text/plain; charset=utf-8'); // Set UFT-8 Header
 
-define("DEBUG", true);
+define("DEBUG", false);
 define("OUTPUT", true);
 
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
+//error_reporting(E_ALL);
+//ini_set("display_errors", 1);
 
 require_once('./libraries/domrobot.php');
-
 
 function precheck($str, $checkEmpty = false)
 {
@@ -201,8 +200,8 @@ class DDNS
             exit('something went wrong 10');
         }
 		
-		if(OUTPUT)
-			echo('good');
+	if(OUTPUT)
+	    echo('good');
         		
         return;
     }
