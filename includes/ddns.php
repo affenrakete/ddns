@@ -88,7 +88,7 @@ class DDNS {
 
     protected function checkAccess($apikey = null) {
         if ($apikey == null || $this->domain['ddns']['apikey'] !== $apikey) {
-            $this->logger->error('unauthorisized access from IP: ' . $_SERVER['REMOTE_ADDR']);
+            $this->logger->error('unauthorisized access');
             return false;
         }
 
