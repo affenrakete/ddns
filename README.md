@@ -40,10 +40,6 @@ apikey = YOURSECRETPWD!11
 domain = affenrakete.de
 ; subdomain
 subdomain = test
-
-; log data
-[log]
-filepath = "./log/test-affenrakete-de.log"
 ```
 
 `./update.php?domain=test.affenrakete.de&password=YOURSECRETPWD!11&ipv4=127.0.0.1&ipv6=::1`
