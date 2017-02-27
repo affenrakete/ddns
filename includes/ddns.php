@@ -104,7 +104,7 @@ class DDNS {
         // INWX Login
         $result = $this->domrobot->login($this->inwx['username'], $this->inwx['password']);
 
-        $this->logger->debug($result);
+        $this->logger->debug('Result', $result);
 
         // check result
         if ($result['code'] != 1000) {
@@ -124,7 +124,7 @@ class DDNS {
     public function inwxLogout() {
         $result = $this->domrobot->logout();
 
-        $this->logger->debug($result);
+        $this->logger->debug('Result', $result);
 
         // check result
         if ($result['code'] != 1500) {
@@ -147,7 +147,7 @@ class DDNS {
         $result = $this->domrobot->call($object, $methode, $params);
 
 
-        $this->logger->debug($result);
+        $this->logger->debug('Result', $result);
 
         // check result
         if ($result['code'] != 1000) {
@@ -192,7 +192,7 @@ class DDNS {
 
         $result = $this->domrobot->call($object, $methode, $params);
 
-        $this->logger->debug($result);
+        $this->logger->debug('Result', $result);
 
         // check result
         if ($result['code'] != 1000) {
