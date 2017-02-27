@@ -10,4 +10,4 @@ install:
  - composer install
  
 script:
- phpunit update.php
+ phpunit update.php?domain=test.affenrakete.de&password=12345&ipv4=127.0.0.1
