@@ -49,4 +49,4 @@ subdomain = test
 filepath = "./log/test-affenrakete-de.log"
 </pre>
 
-https://ddns.affenrakete.de/update.php?domain=test.affenrakete.de&password=YOURSECRETPWD!11&ipv4=127.0.0.1&ipv6=::1
+https://ddns.yourdomain.tld/update.php?domain=test.affenrakete.de&password=YOURSECRETPWD!11&ipv4=127.0.0.1&ipv6=::1
