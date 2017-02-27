@@ -10,13 +10,12 @@ namespace Affenrakete;
  * @link https://affenrakete.de
  *
  */
-
 header('Content-type: text/plain; charset=utf-8'); // Set UFT-8 Header
 
 require_once('./includes/ddns.php');
 require_once('./vendor/autoload.php');
 
-define("DEBUG", true);
+define("DEBUG", false);
 define("OUTPUT", true);
 
 if (DEBUG) {
