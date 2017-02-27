@@ -3,8 +3,8 @@
  * INWX DDNS Manager
  *
  * @author Peter Siemer <info@affenrakete.de>
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @link http://affenrakete.de
+ * @license https://opensource.org/licenses/GPL-3.0 GNU Public License
+ * @link https://affenrakete.de
  *
  */
 header('Content-type: text/plain; charset=utf-8'); // Set UFT-8 Header
