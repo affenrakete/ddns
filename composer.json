@@ -1,7 +1,7 @@
 {
     "name": "affenrakete/ddns",
     "description": "ddns manager for inwx",
-    "version": "1.0-beta.2",
+    "version": "1.0-beta.3",
     "homepage": "https://affenrakete.de",
     "license": "GPL-3.0",
     "require": {
