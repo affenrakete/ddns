@@ -30,13 +30,13 @@ $input['ipv6'] = filter_has_var(INPUT_GET, 'ipv6') ? filter_input(INPUT_GET, 'ip
 
 $ddns = new DDNS($input['domain'], $input['password']);
 
-if($ddns->inwxLogin()) {
-    if($ddns->inwxGetNameserverInfo()) {
+if ($ddns->inwxLogin()) {
+    if ($ddns->inwxGetNameserverInfo()) {
         $dnns->inwxSetNameserverInfo($input['ipv4'], 'ipv4');
         $dnns->inwxSetNameserverInfo($input['ipv6'], 'ipv6');
     }
 }
-if(OUTPUT){
+if (OUTPUT) {
     $ddns->printStatus();
 }
 $ddns->inwxLogout();
