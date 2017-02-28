@@ -26,6 +26,7 @@ class DDNS {
     protected $IP6 = [];        // {oldip, newip, id}
     protected $domrobot;
     protected $logger;
+    protected $returnStatus = "";
 
     public function __construct($apidomain = null, $apikey = null) {
         self::setIniFile($apidomain);
@@ -95,7 +96,7 @@ class DDNS {
         return true;
     }
 
-    protected function inwxLogin() {
+    public function inwxLogin() {
         // INWX Setup class
         $this->domrobot = new Domrobot($this->inwx['apiurl']);
         $this->domrobot->setDebug(false);
@@ -108,11 +109,7 @@ class DDNS {
 
         // check result
         if ($result['code'] != 1000) {
-
-            if (OUTPUT) {
-                echo('badauth');
-            }
-
+            $this->returnStatus = 'badauth';
             $this->logger->error('inwx login not successfull');
             return false;
         }
@@ -136,7 +133,7 @@ class DDNS {
         return true;
     }
 
-    protected function inwxGetNameserverInfo() {
+    public function inwxGetNameserverInfo() {
         $object = "nameserver";
         $methode = "info";
 
@@ -171,19 +168,19 @@ class DDNS {
         return true;
     }
 
-    protected function inwxSetNameserverInfo($type = null) {
+    protected function inwxSetNameserverInfo($ip = null, $type = null) {
         $object = "nameserver";
         $methode = "updateRecord";
 
         $params = array();
 
-        if ($type == 'ipv4') {
+        if ($type == 'ipv4' && filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
             $params['id'] = $this->IP4['id'];
-            $params['content'] = $this->IP4['newip'];
+            $params['content'] = $this->IP4['newip'] = $ip;
             $oldip = $this->IP4['oldip'];
-        } elseif ($type == 'ipv6') {
+        } elseif ($type == 'ipv6' && filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
             $params['id'] = $this->IP6['id'];
-            $params['content'] = $this->IP6['newip'];
+            $params['content'] = $this->IP6['newip'] = $ip;
             $oldip = $this->IP6['oldip'];
         } else {
             $this->logger->warning('set nameserver info type: ' . $type);
@@ -200,43 +197,17 @@ class DDNS {
             return false;
         }
 
+        $this->returnStatus = 'good';
+        
         $this->logger->debug('set nameserver info successfull');
         $this->logger->info('IP Update successfull | old ip: ' . $oldip . ' | new ip: ' . $params['content']);
-
+        
         return true;
     }
 
-    public function updateIP($ipv4 = null, $ipv6 = null) {
+    public function printStatus() {
 
-        if (!self::inwxLogin()) {
-            return false;
-        }
-
-        if (!self::inwxGetNameserverInfo()) {
-            return false;
-        }
-
-        if (filter_var($ipv4, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
-            $this->IP4['newip'] = $ipv4;
-
-            if (!self::inwxSetNameserverInfo('ipv4')) {
-                return false;
-            }
-        }
-
-        if (filter_var($ipv6, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
-            $this->IP6['newip'] = $ipv6;
-
-            if (!self::inwxSetNameserverInfo('ipv6')) {
-                return false;
-            }
-        }
-
-        if (OUTPUT) {
-            echo('good');
-        }
-
-        $this->logger->debug('updateIp successfull');
+        print_r($this->returnStatus);
 
         return true;
     }
