@@ -5,11 +5,10 @@
     "homepage": "https://affenrakete.de",
     "license": "GPL-3.0",
     "require": {
-        "inwx/domrobot": "dev-master",
-        "katzgrau/klogger": "dev-master",
+        "inwx/domrobot": "v2.4",
+        "katzgrau/klogger": "1.2.1",
         "php": ">5.4"
     },
-
     "scripts":
             {
                 "post-install-cmd":
