@@ -37,6 +37,6 @@ if($ddns->inwxLogin()) {
     }
 }
 if(OUTPUT){
-    $ddns->returnStatus();
+    $ddns->printStatus();
 }
 $ddns->inwxLogout();
