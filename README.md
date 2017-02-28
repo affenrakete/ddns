@@ -3,7 +3,6 @@ A dynamic ddns updater for inwx. IPv4 and IPv6 support.
 
 [![Build Status](https://scrutinizer-ci.com/g/affenrakete/ddns/badges/build.png?b=master)](https://scrutinizer-ci.com/g/affenrakete/ddns/build-status/master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/affenrakete/ddns/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/affenrakete/ddns/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/affenrakete/ddns/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/affenrakete/ddns/?branch=master)
 [![Dependency Status](https://gemnasium.com/badges/github.com/affenrakete/ddns.svg)](https://gemnasium.com/github.com/affenrakete/ddns)
 [![Packagist](https://img.shields.io/packagist/v/affenrakete/ddns.svg)](https://packagist.org/packages/affenrakete/ddns)
 [![License](https://img.shields.io/packagist/l/redaxmedia/redaxscript.svg)](https://packagist.org/packages/redaxmedia/redaxscript)
