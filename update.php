@@ -32,8 +32,8 @@ $ddns = new DDNS($input['domain'], $input['password']);
 
 if ($ddns->inwxLogin()) {
     if ($ddns->inwxGetNameserverInfo()) {
-        $dnns->inwxSetNameserverInfo($input['ipv4'], 'ipv4');
-        $dnns->inwxSetNameserverInfo($input['ipv6'], 'ipv6');
+        $ddns->inwxSetNameserverInfo($input['ipv4'], 'ipv4');
+        $ddns->inwxSetNameserverInfo($input['ipv6'], 'ipv6');
     }
 }
 if (OUTPUT) {

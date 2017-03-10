@@ -20,10 +20,10 @@ class DDNS {
     protected $iniFilePath = "./conf/";
     protected $iniFileInwx = "inwx.ini";
     protected $iniFileDomain = "";
-    protected $inwx = [];       // {apiurl, username, password}
-    protected $domain = [];     // [inwx] => {domain, subdomain}, [ddns] => {apikey}
-    protected $IP4 = [];        // {oldip, newip, id}
-    protected $IP6 = [];        // {oldip, newip, id}
+    protected $inwx = [];       // apiurl, username, password
+    protected $domain = [];     // inwx => domain, subdomain; ddns => apikey
+    protected $IP4 = [];        // oldip, newip, id, set
+    protected $IP6 = [];        // oldip, newip, id, set
     protected $domrobot;
     protected $logger;
     protected $returnStatus = "";
@@ -152,12 +152,16 @@ class DDNS {
             return false;
         }
 
+        $this->IP4['set'] = $this->IP6['set'] = false;
+        
         foreach ($result["resData"]["record"] as $value) {
             if ($value['type'] == "A") {
+                $this->IP4['set'] = true;
                 $this->IP4['id'] = $value['id'];
                 $this->IP4['oldip'] = $value['content'];
             }
             if ($value['type'] == "AAAA") {
+                $this->IP6['set'] = true;
                 $this->IP6['id'] = $value['id'];
                 $this->IP6['oldip'] = $value['content'];
             }
@@ -168,22 +172,22 @@ class DDNS {
         return true;
     }
 
-    protected function inwxSetNameserverInfo($ip = null, $type = null) {
+    public function inwxSetNameserverInfo($ip = null, $type = null) {
         $object = "nameserver";
         $methode = "updateRecord";
 
         $params = array();
 
-        if ($type == 'ipv4' && filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
+        if ($type == 'ipv4' && $this->IP4['set'] && filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
             $params['id'] = $this->IP4['id'];
             $params['content'] = $this->IP4['newip'] = $ip;
             $oldip = $this->IP4['oldip'];
-        } elseif ($type == 'ipv6' && filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
+        } elseif ($type == 'ipv6' && $this->IP6['set'] &&  filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
             $params['id'] = $this->IP6['id'];
             $params['content'] = $this->IP6['newip'] = $ip;
             $oldip = $this->IP6['oldip'];
         } else {
-            $this->logger->warning('set nameserver info type: ' . $type);
+            $this->logger->warning('set nameserver info type: ' . $type . '. Old record not set or invalid IP.');
             return false;
         }
 
@@ -206,9 +210,7 @@ class DDNS {
     }
 
     public function printStatus() {
-
         print_r($this->returnStatus);
-
         return true;
     }
 

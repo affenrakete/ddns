@@ -1,0 +1,6 @@
+Order deny,allow
+Deny from all
+
+<files update.php>
+    Allow from all
+</files>
