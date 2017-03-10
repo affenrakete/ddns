@@ -32,11 +32,17 @@ $ddns = new DDNS($input['domain'], $input['password']);
 
 if ($ddns->inwxLogin()) {
     if ($ddns->inwxGetNameserverInfo()) {
-        $dnns->inwxSetNameserverInfo($input['ipv4'], 'ipv4');
-        $dnns->inwxSetNameserverInfo($input['ipv6'], 'ipv6');
+        if ($input['ipv4'] != null) {
+            $ddns->inwxSetNameserverInfo($input['ipv4'], 'A');
+        }
+        if ($input['ipv6'] != null) {
+            $ddns->inwxSetNameserverInfo($input['ipv6'], 'AAAA');
+        }
     }
 }
+
 if (OUTPUT) {
     $ddns->printStatus();
 }
+
 $ddns->inwxLogout();
