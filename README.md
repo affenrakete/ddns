@@ -44,4 +44,4 @@ domain = affenrakete.de
 subdomain = test
 ```
 
-`./update.php?domain=test.affenrakete.de&password=YOURSECRETPWD!11&ipv4=127.0.0.1&ipv6=::1`
+`./update.php?domain=<domain>&password=<apikey>&ipv4=<new_IPV4>&ipv6=<new_IPV6>
